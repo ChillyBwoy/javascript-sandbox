@@ -9,7 +9,7 @@ const config = {
 	debug: true,
 	devtool: 'source-map',
 	entry: {
-		sandbox: path.resolve(__dirname, './lib/index.js')
+		app: ['babel-polyfill', './lib/index.js']
 	},
 	output: {
 		path: path.resolve(__dirname, './build'),
@@ -22,21 +22,14 @@ const config = {
 			{
 				test: /\.js$/,
 				exclude: /(node_modules)/,
-				loader: 'babel',
-				query: {
-					presets: ['es2015']
-				}
-			}, {
-				test: /\.json$/,
-				loader: 'json'
+				loader: 'babel'
 			}
 		]
 	},
 	devServer: {
 		hot: true,
 		progress: true,
-		host: process.env.HOST,
-		port: process.env.PORT || 3979,
+		contentBase: path.join(__dirname, 'public'),
 		headers: {
 			'Access-Control-Allow-Origin': '*'
 		}
