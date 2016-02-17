@@ -1,3 +1,7 @@
+.DS_Store
+.editorconfig
+*.js.map
+
 # Logs
 logs
 *.log
